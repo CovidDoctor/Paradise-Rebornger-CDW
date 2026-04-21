@@ -1392,7 +1392,7 @@
         damage:
           # LP Edit Start
           types:
-            Caustic: -2   # LP Edit Start
+            Caustic: -2
             Radiation: -2
             Cellular: -0.5
             Poison: -2
