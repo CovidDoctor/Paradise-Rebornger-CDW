@@ -573,6 +573,7 @@
   # LP Edit End
   products:
     Opporozidone: 4
+    # LP Edit End
 
 - type: reaction
   id: Arcryox
