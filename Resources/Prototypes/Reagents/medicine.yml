@@ -1385,7 +1385,7 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:HealthChange
+      - !type:HealthChange # LP Edit
         conditions:
         - !type:TemperatureCondition
           max: 213.0
