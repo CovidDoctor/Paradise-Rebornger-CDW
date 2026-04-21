@@ -1396,7 +1396,8 @@
             Radiation: -2
             Cellular: -0.5
             Poison: -2
-            Asphyxiation: -3  # LP Edit End
+            Asphyxiation: -3
+            # LP Edit End
 
 
 - type: reagent
