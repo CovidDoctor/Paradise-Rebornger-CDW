@@ -1390,6 +1390,7 @@
         - !type:TemperatureCondition
           max: 213.0
         damage:
+          # LP Edit Start
           types:
             Caustic: -2   # LP Edit Start
             Radiation: -2
