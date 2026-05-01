@@ -5,80 +5,80 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Ripley MK-II
 
-- type: entity
-  id: BaseRipleyMKIIPart
-  parent: BaseMechPart
-  abstract: true
-  components:
-  - type: Sprite
-    drawdepth: Items
-    noRot: false
-    sprite: _Goobstation/Objects/Specific/Mech/ripleymkii_construction.rsi
+#- type: entity
+#  id: BaseRipleyMKIIPart
+#  parent: BaseMechPart
+#  abstract: true
+#  components:
+#  - type: Sprite
+#    drawdepth: Items
+#    noRot: false
+#    sprite: _GoobStation/Objects/Specific/Mech/ripleymkii_construction.rsi
 
-- type: entity
-  parent: BaseRipleyMKIIPart
-  id: RipleyMKIIHarness
-  name: ripley MK-II harness
-  description: The core of the Ripley MK-II.
-  components:
-  - type: Appearance
-  - type: ItemMapper
-    mapLayers:
-      ripleymkii_upgrade_kit+o:
-        whitelist:
-          tags:
-          - RipleyMKIIUpgradeKit
-      ripleymkii_l_arm+o:
-        whitelist:
-          tags:
-          - RipleyLArm
-      ripleymkii_r_arm+o:
-        whitelist:
-          tags:
-          - RipleyRArm
-      ripleymkii_l_leg+o:
-        whitelist:
-          tags:
-          - RipleyLLeg
-      ripleymkii_r_leg+o:
-        whitelist:
-          tags:
-          - RipleyRLeg
-    sprite: _Goobstation/Objects/Specific/Mech/ripleymkii_construction.rsi
-  - type: ContainerContainer
-    containers:
-      mech-assembly-container: !type:Container
-  - type: MechAssembly
-    finishedPrototype: RipleyMKIIChassis
-    requiredParts:
-      RipleyMKIIUpgradeKit: false
-      RipleyLArm: false
-      RipleyRArm: false
-      RipleyLLeg: false
-      RipleyRLeg: false
-  - type: Sprite
-    state: ripleymkii_harness+o
-    noRot: true
+#- type: entity
+#  parent: BaseRipleyMKIIPart
+#  id: RipleyMKIIHarness
+#  name: ripley MK-II harness
+#  description: The core of the Ripley MK-II.
+#  components:
+#  - type: Appearance
+#  - type: ItemMapper
+#    mapLayers:
+#     ripleymkii_upgrade_kit+o:
+#       whitelist:
+#         tags:
+#         - RipleyMKIIUpgradeKit
+#      ripleymkii_l_arm+o:
+#        whitelist:
+#          tags:
+#          - RipleyLArm
+#      ripleymkii_r_arm+o:
+#        whitelist:
+#          tags:
+#          - RipleyRArm
+#      ripleymkii_l_leg+o:
+#        whitelist:
+#          tags:
+#          - RipleyLLeg
+#      ripleymkii_r_leg+o:
+#        whitelist:
+#          tags:
+#          - RipleyRLeg
+#    sprite: _GoobStation/Objects/Specific/Mech/ripleymkii_construction.rsi
+#  - type: ContainerContainer
+#    containers:
+#      mech-assembly-container: !type:Container
+#  - type: MechAssembly
+#    finishedPrototype: RipleyMKIIChassis
+#    requiredParts:
+#      RipleyMKIIUpgradeKit: false
+#      RipleyLArm: false
+#      RipleyRArm: false
+#      RipleyLLeg: false
+#      RipleyRLeg: false
+#  - type: Sprite
+#    state: ripleymkii_harness+o
+#    noRot: true
 
-- type: entity
-  id: RipleyMKIIChassis
-  parent: BaseRipleyMKIIPart
-  name: ripley MK-II chassis
-  description: An in-progress construction of the Ripley MK-II mech.
-  components:
-  - type: Appearance
-  - type: ContainerContainer
-    containers:
-      battery-container: !type:Container
-  - type: MechAssemblyVisuals
-    statePrefix: ripleymkii
-  - type: Sprite
-    noRot: true
-    state: ripleymkii0
-  - type: Construction
-    graph: RipleyMKII
-    node: start
-    defaultTarget: ripleymkii
+#- type: entity
+#  id: RipleyMKIIChassis
+#  parent: BaseRipleyMKIIPart
+#  name: ripley MK-II chassis
+#  description: An in-progress construction of the Ripley MK-II mech.
+#  components:
+#  - type: Appearance
+#  - type: ContainerContainer
+#    containers:
+#      battery-container: !type:Container
+#  - type: MechAssemblyVisuals
+#    statePrefix: ripleymkii
+#  - type: Sprite
+#    noRot: true
+#    state: ripleymkii0
+#  - type: Construction
+#    graph: RipleyMKII
+#    node: start
+#    defaultTarget: ripleymkii
 
 # Clarke
 
@@ -90,7 +90,7 @@
   - type: Sprite
     drawdepth: Items
     noRot: false
-    sprite: _Goobstation/Objects/Specific/Mech/clarke_construction.rsi
+    sprite: _GoobStation/Objects/Specific/Mech/clarke_construction.rsi
 
 - type: entity
   id: BaseClarkePartItem
@@ -125,20 +125,28 @@
         whitelist:
           tags:
           - ClarkeTreads
-    sprite: _Goobstation/Objects/Specific/Mech/clarke_construction.rsi
+    sprite: _GoobStation/Objects/Specific/Mech/clarke_construction.rsi
   - type: ContainerContainer
     containers:
       mech-assembly-container: !type:Container
-  - type: MechAssembly
-    finishedPrototype: ClarkeChassis
-    requiredParts:
-      ClarkeHead: false
-      ClarkeLArm: false
-      ClarkeRArm: false
-      ClarkeTreads: false
+      battery-container: !type:Container
+  - type: MechAssemblyVisuals
+    statePrefix: clarke
   - type: Sprite
     state: clarke_harness+o
     noRot: true
+  - type: PartAssembly
+    parts:
+      Clarke:
+      - ClarkeLArm
+      - ClarkeRArm
+      - ClarkeLLeg
+      - ClarkeRLeg
+      - ClarkeHead
+    containerId: mech-assembly-container
+  - type: Construction
+    graph: Clarke
+    node: start
 
 - type: entity
   parent: BaseClarkePartItem
@@ -188,25 +196,25 @@
     tags:
     - ClarkeTreads
 
-- type: entity
-  id: ClarkeChassis
-  parent: BaseClarkePart
-  name: clarke chassis
-  description: An in-progress construction of the Clarke mech.
-  components:
-  - type: Appearance
-  - type: ContainerContainer
-    containers:
-      battery-container: !type:Container
-  - type: MechAssemblyVisuals
-    statePrefix: clarke
-  - type: Sprite
-    noRot: true
-    state: clarke0
-  - type: Construction
-    graph: Clarke
-    node: start
-    defaultTarget: clarke
+#- type: entity
+#  id: ClarkeChassis
+#  parent: BaseClarkePart
+#  name: clarke chassis
+#  description: An in-progress construction of the Clarke mech.
+#  components:
+#  - type: Appearance
+#  - type: ContainerContainer
+#    containers:
+#      battery-container: !type:Container
+#  - type: MechAssemblyVisuals
+#    statePrefix: clarke
+#  - type: Sprite
+#    noRot: true
+#    state: clarke0
+#  - type: Construction
+#    graph: Clarke
+#    node: start
+#    defaultTarget: clarke
 
 # Durand
 
@@ -218,7 +226,7 @@
   - type: Sprite
     drawdepth: Items
     noRot: false
-    sprite: _Goobstation/Objects/Specific/Mech/durand_construction.rsi
+    sprite: _GoobStation/Objects/Specific/Mech/durand_construction.rsi
 
 - type: entity
   id: BaseDurandPartItem
@@ -257,21 +265,28 @@
         whitelist:
           tags:
           - DurandRLeg
-    sprite: _Goobstation/Objects/Specific/Mech/durand_construction.rsi
+    sprite: _GoobStation/Objects/Specific/Mech/durand_construction.rsi
   - type: ContainerContainer
     containers:
       mech-assembly-container: !type:Container
-  - type: MechAssembly
-    finishedPrototype: DurandChassis
-    requiredParts:
-      DurandHead: false
-      DurandLArm: false
-      DurandRArm: false
-      DurandLLeg: false
-      DurandRLeg: false
+      battery-container: !type:Container
+  - type: MechAssemblyVisuals
+    statePrefix: durand
   - type: Sprite
     state: durand_harness+o
     noRot: true
+  - type: PartAssembly
+    parts:
+      Durand:
+      - DurandLArm
+      - DurandRArm
+      - DurandLLeg
+      - DurandRLeg
+      - DurandHead
+    containerId: mech-assembly-container
+  - type: Construction
+    graph: Durand
+    node: start
 
 - type: entity
   parent: BaseDurandPartItem
@@ -333,25 +348,25 @@
     tags:
     - DurandRArm
 
-- type: entity
-  id: DurandChassis
-  parent: BaseDurandPart
-  name: durand chassis
-  description: An in-progress construction of the Durand mech.
-  components:
-  - type: Appearance
-  - type: ContainerContainer
-    containers:
-      battery-container: !type:Container
-  - type: MechAssemblyVisuals
-    statePrefix: durand
-  - type: Sprite
-    noRot: true
-    state: durand0
-  - type: Construction
-    graph: Durand
-    node: start
-    defaultTarget: durand
+#- type: entity
+#  id: DurandChassis
+#  parent: BaseDurandPart
+#  name: durand chassis
+#  description: An in-progress construction of the Durand mech.
+#  components:
+#  - type: Appearance
+#  - type: ContainerContainer
+#    containers:
+#      battery-container: !type:Container
+#  - type: MechAssemblyVisuals
+#    statePrefix: durand
+#  - type: Sprite
+#    noRot: true
+#    state: durand0
+#  - type: Construction
+#    graph: Durand
+#    node: start
+#    defaultTarget: durand
 
 # Gygax
 
@@ -363,7 +378,7 @@
   - type: Sprite
     drawdepth: Items
     noRot: false
-    sprite: _Goobstation/Objects/Specific/Mech/gygax_construction.rsi
+    sprite: _GoobStation/Objects/Specific/Mech/gygax_construction.rsi
 
 - type: entity
   id: BaseGygaxPartItem
@@ -402,21 +417,28 @@
         whitelist:
           tags:
           - GygaxRLeg
-    sprite: _Goobstation/Objects/Specific/Mech/gygax_construction.rsi
+    sprite: _GoobStation/Objects/Specific/Mech/gygax_construction.rsi
   - type: ContainerContainer
     containers:
       mech-assembly-container: !type:Container
-  - type: MechAssembly
-    finishedPrototype: GygaxChassis
-    requiredParts:
-      GygaxHead: false
-      GygaxLArm: false
-      GygaxRArm: false
-      GygaxLLeg: false
-      GygaxRLeg: false
+      battery-container: !type:Container
+  - type: MechAssemblyVisuals
+    statePrefix: gygax
   - type: Sprite
     state: gygax_harness+o
     noRot: true
+  - type: PartAssembly
+    parts:
+      Gygax:
+      - GygaxLArm
+      - GygaxRArm
+      - GygaxLLeg
+      - GygaxRLeg
+      - GygaxHead
+    containerId: mech-assembly-container
+  - type: Construction
+    graph: Gygax
+    node: start
 
 - type: entity
   parent: BaseGygaxPartItem
